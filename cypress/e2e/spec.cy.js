@@ -34,7 +34,7 @@ describe("Final tests", () => {
     fillInPage.getMusic.click();
 
     // Upload an image
-    cy.get('input#uploadPicture').click().selectFile('./cypress/fixtures/files/bilde.jpg');
+    fillInPage.uploadPhoto.click().selectFile('./cypress/fixtures/files/bilde.jpg');
 
     // Set State to NCR
     fillInPage.getState.click().type('NCR{enter}');

@@ -89,6 +89,11 @@ class fillInPage {
         return cy.get('button#submit');
     }
 
+    static get uploadPhoto()
+    {
+        return cy.get('input#uploadPicture');
+    }
+
 }
 
 export default fillInPage;
