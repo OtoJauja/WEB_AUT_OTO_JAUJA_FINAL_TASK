@@ -49,6 +49,13 @@ describe("Final tests", () => {
     cy.get('#example-modal-sizes-title-lg').should('be.visible');
     cy.get('table').contains('td', 'Student Name').next().should('have.text', 'Oto Jauja');
     cy.get('table').contains('td', 'Student Email').next().should('have.text', 'oto.jauja@va.lv');
-
+    cy.get('table').contains('td', 'Gender').next().should('have.text', 'Male');
+    cy.get('table').contains('td', 'Mobile').next().should('have.text', '91021420');
+    cy.get('table').contains('td', 'Date of Birth').next().should('have.text', '28 January,1930');
+    cy.get('table').contains('td', 'Subjects').next().should('have.text', 'Economics');
+    cy.get('table').contains('td', 'Hobbies').next().should('have.text', 'Music');
+    cy.get('table').contains('td', 'Picture').next().should('have.text', 'bilde.jpg');
+    cy.get('table').contains('td', 'Address').next().should('have.text', 'Adress was here');
+    cy.get('table').contains('td', 'State and City').next().should('have.text', 'NCR Delhi');
   });
 });
