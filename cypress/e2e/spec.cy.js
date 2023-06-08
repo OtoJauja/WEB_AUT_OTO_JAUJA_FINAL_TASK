@@ -6,7 +6,7 @@ import BasePage from "../pageObjects/Base.page";
 describe("DemoQA spec", () => {
   context("Textbox scenarios", () => {
     beforeEach(() => {
-      cy.visit("/");
+      cy.visit("/automation-practice-form");
       TextBoxPage.visit();
     });
   });
