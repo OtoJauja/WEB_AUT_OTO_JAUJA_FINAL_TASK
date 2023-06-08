@@ -4,10 +4,10 @@ import RadioButtonPage from "../pageObjects/RadioButton.page";
 import BasePage from "../pageObjects/Base.page";
 
 describe("DemoQA spec", () => {
-  context("Textbox scenarios", () => {
+  context("Open automation-practice-form", () => {
     beforeEach(() => {
       cy.visit("/automation-practice-form");
-      TextBoxPage.visit();
     });
+    
   });
 });
