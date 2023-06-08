@@ -1,62 +1,54 @@
-import TextBoxPage from "../pageObjects/TextBox.page";
-import CheckBoxPage from "../pageObjects/Checkbox,page";
-import RadioButtonPage from "../pageObjects/RadioButton.page";
-import BasePage from "../pageObjects/Base.page";
+import fillInPage from "../pageObjects/FillInPage";
 
-
-describe('Test Form Submission', () => {
-  // Define your page elements
-  const nameInput = '[id="firstName"]';
-  const lastNameInput = '[id="lastName"]';
-  const userEmailInput = '[id="userEmail"]';
-  const userNumberInput = '[id="userNumber"]';
-  const dateOfBirthInput = '[id="dateOfBirthInput"]';
-  const subjectsInput = '[id="subjectsInput"]';
-  const hobbiesMusicInput = '[id="hobbies-checkbox-3"]';
-  const stateInput = '[id="stateCity-wrapper"] > [class=" css-tlfecz-indicatorContainer"]';
-  const cityInput = '[id="city"] > .css-1hwfws3';
-  const submitButton = '[id="submit"]';
-
+describe("Test Form Submission", () => {
   beforeEach(() => {
     // Open the website
-    cy.visit('https://demoqa.com/automation-practice-form');
+    fillInPage.visit();
   });
 
-  it('Fill and validate the form', () => {
+  it('Final tasks', () => {
     // Input all the necessary information in the text fields
-    cy.get(nameInput).type('John');
-    cy.get(lastNameInput).type('Doe');
-    cy.get(userEmailInput).type('john.doe@example.com');
-    cy.get(userNumberInput).type('1234567890');
+    fillInPage.firstName.type("Oto");
+    fillInPage.lastName.type('Jauja');
+    fillInPage.getEmail.type('oto.jauja@va.lv');
+    fillInPage.getNumber.type('91021420');
+    fillInPage.getAdress.type("Adress was here");;
+    fillInPage.getGender.contains('Male').click();
 
     // Set the Date of Birth with Calendar widget to 28th of February, 1930
-    cy.get(dateOfBirthInput).click();
-    cy.contains('1930').click();
-    cy.contains('February').click();
-    cy.get('.react-datepicker__day--028').click();
+    fillInPage.getBirthDate.click();
+  
+    // Navigate to February
+    fillInPage.getMonth.select('February');
+
+    // Navigate to 1930
+    fillInPage.getYear.select('1930');
+  
+    // Select the 28th
+    fillInPage.getDay.contains("28").click();
 
     // Set Subjects to Economics
-    cy.get(subjectsInput).type('Economics{enter}');
+    fillInPage.getSubjects.type('Economics{enter}');
 
     // Set Hobbies to Music
-    cy.get(hobbiesMusicInput).check();
+    fillInPage.getMusic.click();
 
     // Upload an image
-    cy.get('input[type="file"]').attachFile('files/bilde.jpg');
+    cy.get('input#uploadPicture').click().selectFile('./cypress/fixtures/files/bilde.jpg');
 
     // Set State to NCR
-    cy.get(stateInput).type('NCR{enter}');
+    fillInPage.getState.click().type('NCR{enter}');
 
     // Set City to Delhi
-    cy.get(cityInput).type('Delhi{enter}');
+    fillInPage.getCity.click().type('Delhi{enter}');
 
     // Click Submit
-    cy.get(submitButton).click();
+    fillInPage.clickSubmit.click();
 
     // Validate that each Labeled row contains the correct information
     cy.get('#example-modal-sizes-title-lg').should('be.visible');
-    cy.get('table').contains('td', 'Student Name').next().should('have.text', 'John Doe');
-    cy.get('table').contains('td', 'Student Email').next().should('have.text', 'john.doe@example.com');
-    // Do this for every label you wish to validate
+    cy.get('table').contains('td', 'Student Name').next().should('have.text', 'Oto Jauja');
+    cy.get('table').contains('td', 'Student Email').next().should('have.text', 'oto.jauja@va.lv');
+
   });
 });
