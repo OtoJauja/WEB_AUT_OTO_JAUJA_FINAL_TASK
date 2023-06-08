@@ -6,7 +6,7 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     baseUrl: "https://demoqa.com",
-    viewportWidth: 1340,
-    viewportHeight: 1440,
+    viewportWidth: 1440,
+    viewportHeight: 1340,
   },
 });

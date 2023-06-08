@@ -1,6 +1,6 @@
 import fillInPage from "../pageObjects/FillInPage";
 
-describe("Test Form Submission", () => {
+describe("Final tests", () => {
   beforeEach(() => {
     // Open the website
     fillInPage.visit();
