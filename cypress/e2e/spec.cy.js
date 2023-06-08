@@ -2,12 +2,11 @@ import fillInPage from "../pageObjects/FillInPage";
 
 describe("Final tests", () => {
   beforeEach(() => {
-    // Open the website
     fillInPage.visit();
   });
 
   it('Final tasks', () => {
-    // Input all the necessary information in the text fields
+    //ievada visus nepieciešamo laukus
     fillInPage.firstName.type("Oto");
     fillInPage.lastName.type('Jauja');
     fillInPage.getEmail.type('oto.jauja@va.lv');
@@ -15,37 +14,37 @@ describe("Final tests", () => {
     fillInPage.getAdress.type("Adress was here");;
     fillInPage.getGender.contains('Male').click();
 
-    // Set the Date of Birth with Calendar widget to 28th of February, 1930
+    // uzpiež uz birth date
     fillInPage.getBirthDate.click();
   
-    // Navigate to February
+    // navigē uz februāri
     fillInPage.getMonth.select('February');
 
-    // Navigate to 1930
+    // navigē uz 1930 gadu
     fillInPage.getYear.select('1930');
   
-    // Select the 28th
+    // selektē 28 dienu
     fillInPage.getDay.contains("28").click();
 
-    // Set Subjects to Economics
+    // izvēlas subjektu economics
     fillInPage.getSubjects.type('Economics{enter}');
 
-    // Set Hobbies to Music
+    // izvēlas mūziku
     fillInPage.getMusic.click();
 
-    // Upload an image
+    // augšuplādē foto
     fillInPage.uploadPhoto.click().selectFile('./cypress/fixtures/files/bilde.jpg');
 
-    // Set State to NCR
+    // izvēlas štatu kā NCR
     fillInPage.getState.click().type('NCR{enter}');
 
-    // Set City to Delhi
+    // izvēlas pilšetu kā dehli
     fillInPage.getCity.click().type('Delhi{enter}');
 
-    // Click Submit
+    // nospiež submit
     fillInPage.clickSubmit.click();
 
-    // Validate that each Labeled row contains the correct information
+    // validē laukumus
     cy.get('#example-modal-sizes-title-lg').should('be.visible');
     cy.get('table').contains('td', 'Student Name').next().should('have.text', 'Oto Jauja');
     cy.get('table').contains('td', 'Student Email').next().should('have.text', 'oto.jauja@va.lv');
