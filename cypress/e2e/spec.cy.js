@@ -42,7 +42,7 @@ describe('Test Form Submission', () => {
     cy.get(hobbiesMusicInput).check();
 
     // Upload an image
-    cy.get('input[type="file"]').attachFile('files/your-image.jpg');
+    cy.get('input[type="file"]').attachFile('/files/bilde.jpg');
 
     // Set State to NCR
     cy.get(stateInput).type('NCR{enter}');
